@@ -1,0 +1,169 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     
+    font-family: Arial, sans-serif;
+    padding: 5px;
+    overflow-x: hidden;
+}
+
+/* Card */
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 1%;
+    margin-top: 0px;
+    text-align: center;
+    width: 300%;
+    max-width: 580px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: heartbeat 2.5s infinite;
+    z-index: 10;
+}
+
+@keyframes heartbeat {
+    0% { box-shadow: 0 0 15px rgba(255,77,109,0.4); }
+    50% { box-shadow: 0 0 35px rgba(255,77,109,0.8); }
+    100% { box-shadow: 0 0 15px rgba(255,77,109,0.4); }
+}
+
+h1 { color: #ff4d6d;
+    margin-top: 5px; }
+h2 { color: #ff758f;
+    margin-top: 5px; }
+
+p {
+    color: #444;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 20px;
+    background: #ff4d6d;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Slider */
+/* Romantic Slider */
+/* ===== Romantic Perfect Slider ===== */
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 260px;              /* mobile default */
+    overflow: hidden;
+    border-radius: 18px;
+    background:;
+}
+
+/* Slide container */
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* Image styling */
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;        /* 👈 FACE SAFE */
+    object-position: center;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));
+}
+
+/* 💻 Laptop & Tablet */
+@media (min-width: 768px) {
+    .slider {
+        height: 320px;
+    }
+}
+
+/* Signature */
+.signature {
+    margin-top: 15px;
+    font-style: italic;
+    color: #ff4d6d;
+}
+
+/* Hearts */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 22px;
+    animation: float 4s linear forwards;
+}
+
+@keyframes float {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* Letter Popup */
+.letter {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff0f5;
+    color: #444;
+    padding: 25px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 320px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    z-index: 200;
+}
+
+/* Fullscreen Celebration */
+.fullscreen {
+    transform: scale(1.05);
+}
+
+/* Night Mode */
+body.night {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+body.night .card {
+    background: #1e1e2f;
+}
+body.night .letter {
+    background: #1e1e2f;
+}
+
+body.night p {
+    color: #472d2d;
+    color: #f8f2f2;;
+}
+
+body.night h1,
+body.night h2 {
+    color: #ff9aa2;
+}

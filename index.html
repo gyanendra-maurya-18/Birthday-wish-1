@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      z-index: 2;
+      position: relative;
+    }
+
+    /* 🎀 Gift Icon */
+    #giftIcon {
+      font-size: 4rem;
+      color: #d4418e;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      cursor: pointer;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    /* 🎁 Gift Box */
+    #giftBox {
+      width: 150px;
+      height: 150px;
+      background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      margin: 0 auto;
+      position: relative;
+    }
+
+    #giftBox:hover, #giftIcon:hover {
+      transform: scale(1.1);
+    }
+
+    /* Click hint text */
+    .click-hint {
+      font-size: 1rem;
+      color: #333;
+      margin-top: 8px;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0.3; }
+    }
+
+    .message, .cake-photo-container, .images-container {
+      opacity: 0;
+      transition: all 1s ease;
+    }
+
+    .message.show,
+    .cake-photo-container.show,
+    .images-container.show {
+      opacity: 1;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #d4418e;
+    }
+
+    .cake-photo {
+      width: 200px;
+      border-radius: 15px;
+      margin-top: 20px;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    /* Images row */
+    .images-container {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: nowrap;
+    }
+
+    .birthday-image {
+      width: 200px;
+      border-radius: 15px;
+      opacity: 0;
+      transform: translateY(80px);
+      animation: slideUp 1s ease forwards;
+    }
+
+    .birthday-image:nth-child(1) { animation-delay: 0.3s; }
+    .birthday-image:nth-child(2) { animation-delay: 0.6s; }
+    .birthday-image:nth-child(3) { animation-delay: 0.9s; }
+
+    /* Animations */
+    @keyframes slideUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Falling celebration */
+    .falling {
+      position: fixed;
+      top: -50px;
+      font-size: 1.8rem;
+      animation: fall linear forwards;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0.8;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 🎀 Gift Icon -->
+    <a href="final.html" title="Click to open">
+        <div id="giftIcon">🎀</div>
+    </a>
+
+    <!-- 🎁 Gift Box -->
+     <a href="final.html" title="Click to open">
+        <div id="giftBox" title="Click to open">🎁 </div>
+     </a>
+
+     <a href="final.html" title="Click to open">
+        <div class="click-hint">Click me 🎁</div>
+     </a>
+
+    
+
+    <!-- Surprise content -->
+    
+
+  <!-- 🎶 Birthday Music -->
+  <audio id="birthdayMusic" loop>
+    <source src="music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script>
+    const giftBox = document.getElementById("giftBox");
+    const giftIcon = document.getElementById("giftIcon");
+    const birthdayMessage = document.getElementById("birthdayMessage");
+    const cakeContainer = document.getElementById("cakeContainer");
+    const imagesContainer = document.getElementById("imagesContainer");
+    const music = document.getElementById("birthdayMusic");
+
+    function openGift() {
+      giftBox.style.display = "none";
+      giftIcon.style.display = "none";
+      document.querySelector(".click-hint").style.display = "none";
+
+      birthdayMessage.classList.add("show");
+      cakeContainer.classList.add("show");
+      imagesContainer.classList.add("show");
+
+      startFalling();
+
+      // 🎶 Play music
+      music.play().catch(e => console.log("Music autoplay blocked:", e));
+    }
+
+    [giftBox, giftIcon].forEach(el => {
+      el.addEventListener("click", openGift);
+    });
+
+    // Falling celebration effect
+    function startFalling() {
+      const symbols = ["🎉","🥰","❤️","✨", "🥳", "🎊", "⭐"];
+      setInterval(() => {
+        const element = document.createElement("div");
+        element.classList.add("falling");
+        element.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        element.style.left = Math.random() * 100 + "vw";
+        element.style.animationDuration = (2 + Math.random() * 2) + "s"; // fast speed
+        document.body.appendChild(element);
+
+        setTimeout(() => {
+          element.remove();
+        }, 4000);
+      }, 200);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Background Music -->
+<audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card" id="card">
+    <h1>🎂 Happy Birthday 🎂</h1>
+    <h2>Pawni 💖</h2>
+
+    <!-- Typing Message -->
+    <p id="typing"></p>
+
+    <!-- Image Slider -->
+    <div class="slider">
+    <div class="slide active">
+        <img src="img1.jpeg" alt="">
+    </div>
+    <div class="slide">
+        <img src="img3.jpeg" alt="">
+    </div>
+    <div class="slide">
+        <img src="img4.jpeg" alt="">
+    </div>
+</div>
+    <button onclick="celebrate()">Click for Surprise 🎁</button>
+    <button onclick="openLetter()">Read My Letter 💌</button>
+    <button onclick="toggleNight()">🌙 Night Mode</button>
+    <button onclick="shareWhatsApp()">Share on WhatsApp 💚</button>
+
+    <p id="surprise" class="hidden">
+        💕 You are the most beautiful part of my life 💕
+    </p>
+
+    <!-- Typing Name -->
+    <p id="signature" class="signature"></p>
+</div>
+
+<!-- Love Letter -->
+<div id="letterBox" class="letter hidden">
+    <h3>For You ❤️</h3>
+    <p>
+        I don’t know the perfect words,  
+        but I know one thing for sure…  
+        your smile makes my day brighter 🌸  
+        <br><br>
+        Happy Birthday 💖
+    </p>
+    <button onclick="closeLetter()">Close ✨</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
